@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI & Backend Systems Architect | Student Developer Portfolio</title>
+    <meta name="description" content="Portfolio of a CS student specializing in AI integrations, production-grade backend systems, and full-stack development. Hackathon Winner #2.">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%238a2be2'/><text y='72' font-size='65' text-anchor='middle' x='50' fill='white' font-family='sans-serif' font-weight='bold'>AI</text></svg>">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <!-- Space-Cyber Atmos Background -->
+    <div class="atmosphere">
+        <div class="glow-orb glow-orb-1"></div>
+        <div class="glow-orb glow-orb-2"></div>
+        <div class="glow-orb glow-orb-3"></div>
+        <div class="grid-overlay"></div>
+    </div>
+
+    <!-- Navigation Header -->
+    <div class="navbar-container">
+        <nav class="navbar glass">
+            <div class="logo">Shahid Khan</div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#stats">Metrics</a></li>
+                <li><a href="#toolkit">Toolkit</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Achievements</a></li>
+                <li><a href="#timeline">Timeline</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" aria-label="Toggle visual theme">
+                    <i data-lucide="sun"></i>
+                </button>
+                <a href="#contact" class="btn btn-outline nav-hire-btn">
+                    Signal Channel
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Main Content Grid -->
+    <main>
+        
+        <!-- 1. HERO SECTION -->
+        <section id="home" class="hero container">
+            <div class="hero-content reveal">
+                <span class="hero-subtitle">System Online // Student AI Developer</span>
+                <h1 class="hero-title" id="hero-headline">Building Intelligent Backend Systems That Scale</h1>
+                
+                <div class="hero-description-card glass">
+                    <p class="hero-description">
+                        I am an <span id="typewriter" class="highlight-text"></span>
+                        specializing in building production-grade APIs, AI integrations, and full-stack applications where design meets system stability.
+                    </p>
+                </div>
+                
+                <div class="hero-actions">
+                    <a href="#projects" class="btn btn-secondary">
+                        View Projects
+                        <i data-lucide="arrow-right"></i>
+                    </a>
+                    <a href="#contact" class="btn btn-outline">Contact Signal</a>
+                </div>
+            </div>
+            
+            <div class="hero-visual reveal" style="animation-delay: 0.25s;">
+                <div class="avatar-frame-container">
+                    <div class="glowing-circle"></div>
+                    <div class="avatar-frame glass">
+                        <img src="assets/developer_avatar.png" alt="Developer Neural Avatar" class="avatar-image">
+                    </div>
+                    <!-- Ambient Hover Data Rings -->
+                    <div class="hover-ring-1"></div>
+                    <div class="hover-ring-2"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. CREDIBILITY & STATS SECTION -->
+        <section id="stats" class="section container">
+            <div class="section-header reveal">
+                <span class="section-tag">Telemetry</span>
+                <h2 class="section-title">SYSTEM METRICS</h2>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card glass reveal" data-target="5">
+                    <div class="stat-icon-wrap"><i data-lucide="folder-git-2"></i></div>
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Projects Built</div>
+                </div>
+                <div class="stat-card glass reveal" data-target="3" style="animation-delay: 0.1s;">
+                    <div class="stat-icon-wrap"><i data-lucide="cpu"></i></div>
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">AI Projects</div>
+                </div>
+                <div class="stat-card glass reveal" data-target="3" style="animation-delay: 0.2s;">
+                    <div class="stat-icon-wrap"><i data-lucide="database"></i></div>
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Databases Used</div>
+                </div>
+                <div class="stat-card glass reveal" data-target="2" style="animation-delay: 0.3s;">
+                    <div class="stat-icon-wrap"><i data-lucide="code-xml"></i></div>
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Programming Languages</div>
+                </div>
+                <div class="stat-card glass reveal" data-target="2" data-prefix="#" style="animation-delay: 0.4s;">
+                    <div class="stat-icon-wrap"><i data-lucide="trophy"></i></div>
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Hackathon Rank</div>
+                </div>
+                <div class="stat-card glass reveal" data-target="9" data-suffix="/10" style="animation-delay: 0.5s;">
+                    <div class="stat-icon-wrap"><i data-lucide="graduation-cap"></i></div>
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Current GPA</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. TOOLKIT SECTION -->
+        <section id="toolkit" class="section container">
+            <div class="section-header reveal">
+                <span class="section-tag">Capabilities</span>
+                <h2 class="section-title">TECHNICAL SHARDS</h2>
+            </div>
+            
+            <div class="skills-grid reveal">
+                <!-- Frontend -->
+                <div class="skill-card glass tilt-card">
+                    <div class="skill-icon color-cyan"><i data-lucide="layout-template"></i></div>
+                    <h3>Frontend Development</h3>
+                    <div class="skill-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                        <span>React</span>
+                        <span>Tailwind</span>
+                    </div>
+                </div>
+                <!-- Backend -->
+                <div class="skill-card glass tilt-card">
+                    <div class="skill-icon color-purple"><i data-lucide="server"></i></div>
+                    <h3>Backend Architecture</h3>
+                    <div class="skill-tags">
+                        <span>Node.js</span>
+                        <span>Express</span>
+                        <span>JWT Auth</span>
+                        <span>REST APIs</span>
+                    </div>
+                </div>
+                <!-- Database -->
+                <div class="skill-card glass tilt-card">
+                    <div class="skill-icon color-mint"><i data-lucide="database"></i></div>
+                    <h3>Database Sharding</h3>
+                    <div class="skill-tags">
+                        <span>MongoDB</span>
+                        <span>PostgreSQL</span>
+                        <span>Redis Caching</span>
+                    </div>
+                </div>
+                <!-- AI -->
+                <div class="skill-card glass tilt-card">
+                    <div class="skill-icon color-orange"><i data-lucide="brain-circuit"></i></div>
+                    <h3>AI Engineering</h3>
+                    <div class="skill-tags">
+                        <span>OpenAI APIs</span>
+                        <span>Google Gemini</span>
+                        <span>Groq Llama</span>
+                        <span>Prompt Engineering</span>
+                    </div>
+                </div>
+                <!-- DevOps -->
+                <div class="skill-card glass tilt-card">
+                    <div class="skill-icon color-pink"><i data-lucide="cloud-lightning"></i></div>
+                    <h3>Cloud Infrastructure</h3>
+                    <div class="skill-tags">
+                        <span>Coolify</span>
+                        <span>Render</span>
+                        <span>Docker</span>
+                        <span>GitHub Actions</span>
+                    </div>
+                </div>
+                <!-- Systems -->
+                <div class="skill-card glass tilt-card">
+                    <div class="skill-icon color-yellow"><i data-lucide="shield-check"></i></div>
+                    <h3>System Architecture</h3>
+                    <div class="skill-tags">
+                        <span>Multi-Role RBAC</span>
+                        <span>Secure httpOnly Cookies</span>
+                        <span>API Design</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. PROJECT SHOWCASE -->
+        <section id="projects" class="section container">
+            <div class="section-header reveal">
+                <span class="section-tag">Showcase</span>
+                <h2 class="section-title">ACTIVE PROTOTYPES</h2>
+            </div>
+
+            <!-- Filter Controls -->
+            <div class="filter-container reveal">
+                <button class="filter-btn active" data-filter="all">All Channels</button>
+                <button class="filter-btn" data-filter="ai">AI Integrated</button>
+                <button class="filter-btn" data-filter="backend">Backend Core</button>
+                <button class="filter-btn" data-filter="fullstack">Full-Stack</button>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="work-grid reveal">
+                <!-- Project 1: Growcus -->
+                <div class="project-card tilt-card" data-project="growcus" data-category="ai fullstack backend">
+                    <div class="project-image-wrapper">
+                        <img src="assets/project_dashboard.png" alt="Growcus Dropout Prediction Dashboard" class="project-img">
+                        <div class="project-tags">
+                            <span class="project-tag">AI-Driven</span>
+                            <span class="project-tag">Next.js</span>
+                            <span class="project-tag">RBAC</span>
+                        </div>
+                    </div>
+                    <h3 class="project-title">PROJECT: GROWCUS</h3>
+                    <p class="project-desc">AI-powered student dropout prediction platform with multi-role architecture and AI assistant integration.</p>
+                </div>
+                <!-- Project 2: TrustLens -->
+                <div class="project-card tilt-card" data-project="trustlens" data-category="ai backend">
+                    <div class="project-image-wrapper">
+                        <img src="assets/project_fintech.png" alt="TrustLens OCR Screen" class="project-img">
+                        <div class="project-tags">
+                            <span class="project-tag">OCR / AI</span>
+                            <span class="project-tag">PostgreSQL</span>
+                            <span class="project-tag">Redis</span>
+                        </div>
+                    </div>
+                    <h3 class="project-title">PROJECT: TRUSTLENS</h3>
+                    <p class="project-desc">AI document verification platform using OCR, PostgreSQL, Redis, and fake-score analysis.</p>
+                </div>
+                <!-- Project 3: ClientFinder -->
+                <div class="project-card tilt-card" data-project="clientfinder" data-category="ai fullstack">
+                    <div class="project-image-wrapper">
+                        <img src="assets/project_ecommerce.png" alt="ClientFinder AI Market Analysis" class="project-img">
+                        <div class="project-tags">
+                            <span class="project-tag">Gemini AI</span>
+                            <span class="project-tag">OpenStreetMap</span>
+                        </div>
+                    </div>
+                    <h3 class="project-title">PROJECT: CLIENTFINDER</h3>
+                    <p class="project-desc">AI market analysis system combining OpenStreetMap data and Gemini AI for lead generation.</p>
+                </div>
+                <!-- Project 4: Society Management System -->
+                <div class="project-card tilt-card" data-project="society_system" data-category="fullstack backend">
+                    <div class="project-image-wrapper">
+                        <img src="assets/project_dashboard.png" alt="Society Management System Screen" class="project-img" style="filter: hue-rotate(240deg) saturate(1.3);">
+                        <div class="project-tags">
+                            <span class="project-tag">Node / Express</span>
+                            <span class="project-tag">MongoDB</span>
+                        </div>
+                    </div>
+                    <h3 class="project-title">PROJECT: SOCIETY SYSTEM</h3>
+                    <p class="project-desc">Apartment management solution covering residents, complaints, transparent ledger, and billing workflows.</p>
+                </div>
+                <!-- Project 5: ShortLink -->
+                <div class="project-card tilt-card" data-project="shortlink" data-category="backend">
+                    <div class="project-image-wrapper">
+                        <img src="assets/project_fintech.png" alt="ShortLink Analytics Screen" class="project-img" style="filter: hue-rotate(120deg);">
+                        <div class="project-tags">
+                            <span class="project-tag">Analytics</span>
+                            <span class="project-tag">Redis</span>
+                            <span class="project-tag">Docker</span>
+                        </div>
+                    </div>
+                    <h3 class="project-title">PROJECT: SHORTLINK</h3>
+                    <p class="project-desc">High-performance URL shortener with real-time analytics, secure auth, and cloud-ready infrastructure.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. EXPERIENCE & OWNERSHIP -->
+        <section id="experience" class="section container">
+            <div class="section-header reveal">
+                <span class="section-tag">Architecture</span>
+                <h2 class="section-title">LEADERSHIP &amp; ARCHITECTURE</h2>
+            </div>
+            
+            <div class="grid-2">
+                <!-- Left: Leadership & Ownership bullet points -->
+                <div class="experience-left reveal">
+                    <h3 class="subsection-title"><i data-lucide="shield-alert"></i>SYSTEM OWNERSHIP</h3>
+                    <div class="ownership-list">
+                        <div class="ownership-item glass">
+                            <div class="ownership-marker"><i data-lucide="key-round"></i></div>
+                            <div class="ownership-text">Architected a multi-role backend system serving Admin, Teacher, Student, and Parent roles.</div>
+                        </div>
+                        <div class="ownership-item glass">
+                            <div class="ownership-marker"><i data-lucide="fingerprint"></i></div>
+                            <div class="ownership-text">Designed complete authentication and authorization workflows using JWT and secure httpOnly cookies.</div>
+                        </div>
+                        <div class="ownership-item glass">
+                            <div class="ownership-marker"><i data-lucide="database-backup"></i></div>
+                            <div class="ownership-text">Built and owned end-to-end backend architecture across multiple production-grade projects.</div>
+                        </div>
+                        <div class="ownership-item glass">
+                            <div class="ownership-marker"><i data-lucide="brain"></i></div>
+                            <div class="ownership-text">Integrated AI systems into real-world applications rather than using AI as a standalone feature.</div>
+                        </div>
+                        <div class="ownership-item glass">
+                            <div class="ownership-marker"><i data-lucide="workflow"></i></div>
+                            <div class="ownership-text">Designed scalable REST APIs, database schemas, caching layers, and deployment workflows.</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right: Major Achievements cards -->
+                <div class="experience-right reveal" style="animation-delay: 0.2s>
+                    <h3 class="subsection-title"><i data-lucide="award"></i> KEY MILESTONES</h3>
+                    <div class="achievements-stack">
+                        <!-- Hackathon Achievement -->
+                        <div class="achievement-card glass">
+                            <div class="achievement-header">
+                                <span class="achievement-badge"><i data-lucide="trophy"></i> Rank 2</span>
+                                <h4>Google Developer Built with AI Hackathon</h4>
+                            </div>
+                            <p>Secured Rank 2 globally/regionally organized by Google Developer Programs at Cambridge Institute of Technology.</p>
+                        </div>
+                        <!-- Backend Engineering -->
+                        <div class="achievement-card glass">
+                            <div class="achievement-header">
+                                <span class="achievement-badge"><i data-lucide="server"></i> Production</span>
+                                <h4>Backend Engineering</h4>
+                            </div>
+                            <p>Built multiple production-grade backend systems using Node.js, Express, MongoDB, PostgreSQL, and Redis.</p>
+                        </div>
+                        <!-- AI Integration -->
+                        <div class="achievement-card glass">
+                            <div class="achievement-header">
+                                <span class="achievement-badge"><i data-lucide="cpu"></i> Inference</span>
+                                <h4>AI Integration</h4>
+                            </div>
+                            <p>Integrated Groq Llama models and Google Gemini into real-world business applications.</p>
+                        </div>
+                        <!-- Cloud Deployment -->
+                        <div class="achievement-card glass">
+                            <div class="achievement-header">
+                                <span class="achievement-badge"><i data-lucide="cloud"></i> Deployment</span>
+                                <h4>Cloud Deployment</h4>
+                            </div>
+                            <p>Successfully deployed and managed full-stack applications using Render and Coolify.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. TIMELINE SECTION -->
+        <section id="timeline" class="section container">
+            <div class="section-header reveal">
+                <span class="section-tag">Chronology</span>
+                <h2 class="section-title">SYSTEM EVENT LOGS</h2>
+            </div>
+            
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+                
+                <!-- Timeline item 1 -->
+                <div class="timeline-item purple reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass">
+                        <span class="timeline-date">PHASE 01</span>
+                        <h3 class="timeline-role">Started Coding</h3>
+                        <p class="timeline-desc">Initialized basic computer science study, compiling algorithms and understanding data structure fundamentals.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline item 2 -->
+                <div class="timeline-item cyan reveal" style="animation-delay: 0.1s;">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass">
+                        <span class="timeline-date">PHASE 02</span>
+                        <h3 class="timeline-role">Learned Web Development</h3>
+                        <p class="timeline-desc">Mastered HTML, CSS, JavaScript, and database management, building local REST APIs and responsive frontends.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline item 3 -->
+                <div class="timeline-item mint reveal" style="animation-delay: 0.2s;">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass">
+                        <span class="timeline-date">PHASE 03</span>
+                        <h3 class="timeline-role">Built First Project</h3>
+                        <p class="timeline-desc">Designed a fully modular apartment transparency platform, hosting billing queues and secure database schemas.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline item 4 -->
+                <div class="timeline-item purple reveal" style="animation-delay: 0.3s;">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass">
+                        <span class="timeline-date">PHASE 04</span>
+                        <h3 class="timeline-role">Started AI Development</h3>
+                        <p class="timeline-desc">Explored API wrappers, integrating Gemini and Llama inference nodes to perform automated student tracking.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline item 5 -->
+                <div class="timeline-item cyan reveal" style="animation-delay: 0.4s;">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass">
+                        <span class="timeline-date">PHASE 05</span>
+                        <h3 class="timeline-role">Open Source Contributions</h3>
+                        <p class="timeline-desc">Collaborating on telemetry tools, scripting CI/CD automation pipelines, and designing secure cookie flows.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. CONTACT SECTION -->
+        <section id="contact" class="section container">
+            <div class="contact-wrapper glass reveal">
+                <div class="contact-bg-icon">
+                    <i data-lucide="radio" style="width: 8rem; height: 8rem;"></i>
+                </div>
+                
+                <div class="contact-info">
+                    <h2>INITIATE SIGNAL</h2>
+                    <p>Establish a telemetry link. Transmit your project criteria directly to my interface.</p>
+                </div>
+                
+                <form class="contact-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="identity">Identity</label>
+                            <input type="text" id="identity" class="form-input" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="frequency">Email Address</label>
+                            <input type="email" id="frequency" class="form-input" placeholder="Your Email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="transmission">Transmission Content</label>
+                        <textarea id="transmission" class="form-input" placeholder="Describe system details..." rows="5" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-secondary" style="width: 100%; justify-content: center; padding: 1.2rem;">
+                        Transmit Signal
+                        <i data-lucide="arrow-right-left"></i>
+                    </button>
+                </form>
+            </div>
+        </section>
+        
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <h4>Shahid Khan</h4>
+                <p>&copy; 2026 AI Systems Architect. Built using custom HTML, CSS, and JS.</p>
+            </div>
+            <div class="social-links">
+                <a href="https://github.com/Shahidkhan-0708/" target="_blank" rel="noopener">Github</a>
+                <a href="https://www.linkedin.com/in/shahid-k-007b3b380/" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://www.instagram.com/im_shahid07_" target="_blank" rel="noopener">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Project Detail Modal -->
+    <div class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-card glass">
+            <button class="modal-close" aria-label="Close modal window">
+                <i data-lucide="x"></i>
+            </button>
+            <div class="modal-hero">
+                <img src="" alt="Project Showcase" class="modal-img">
+            </div>
+            <div class="modal-body">
+                <div class="modal-tags"></div>
+                <h3 class="modal-title">PROJECT_TITLE</h3>
+                
+                <div class="modal-info-grid">
+                    <div>
+                        <p class="modal-description">Detailed description goes here...</p>
+                    </div>
+                    <div class="modal-meta">
+                        <div class="meta-group">
+                            <h5>Target System</h5>
+                            <p id="modal-client">-</p>
+                        </div>
+                        <div class="meta-group">
+                            <h5>Core Impact</h5>
+                            <p id="modal-timeline">-</p>
+                        </div>
+                        <div class="meta-group" style="margin-top: 1rem;">
+                            <a id="modal-url" href="#" target="_blank" rel="noopener" class="btn btn-primary" style="padding: 0.6rem 1.2rem; font-size: 0.8rem;">
+                                Live Source
+                                <i data-lucide="external-link"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container"></div>
+
+    <!-- Script Link -->
+    <script src="script.js"></script>
+</body>
+</html>
