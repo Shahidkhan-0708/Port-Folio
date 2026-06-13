@@ -19,8 +19,41 @@
     
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- GSAP Animation Engine -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
 </head>
 <body>
+
+    <!-- ===== LOADING SCREEN ===== -->
+    <div class="loading-screen" id="loading-screen">
+        <div class="loading-marquee">
+            <div class="loading-marquee-track">
+                <span>SHAHID KHAN</span><span>AI ARCHITECT</span><span>BACKEND SYSTEMS</span><span>FULL STACK</span>
+                <span>SHAHID KHAN</span><span>AI ARCHITECT</span><span>BACKEND SYSTEMS</span><span>FULL STACK</span>
+            </div>
+        </div>
+        <div class="loading-center">
+            <div class="loading-btn-wrap" id="loading-wrap">
+                <div class="loading-hover-glow"></div>
+                <button class="loading-btn" id="loading-btn">
+                    <span class="loading-btn-text">ENTER SYSTEM</span>
+                    <span class="loading-counter" id="loading-counter">0</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-glow"></div>
+    <div class="cursor-dot"></div>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress-container">
+        <div class="scroll-progress-bar" id="scroll-bar"></div>
+    </div>
 
     <!-- Space-Cyber Atmos Background -->
     <div class="atmosphere">
@@ -80,14 +113,57 @@
             </div>
             
             <div class="hero-visual reveal" style="animation-delay: 0.25s;">
-                <div class="avatar-frame-container">
-                    <div class="glowing-circle"></div>
-                    <div class="avatar-frame glass">
-                        <img src="assets/developer_avatar.png" alt="Developer Neural Avatar" class="avatar-image">
+                <div class="ai-core-container">
+                    <!-- Particle field behind avatar -->
+                    <canvas id="avatar-particles" class="avatar-particle-field"></canvas>
+                    
+                    <!-- Outer orbit ring 3 -->
+                    <div class="orbit-ring orbit-ring-3">
+                        <div class="data-node node-1"><span>AI</span></div>
+                        <div class="data-node node-2"><span>API</span></div>
                     </div>
-                    <!-- Ambient Hover Data Rings -->
-                    <div class="hover-ring-1"></div>
-                    <div class="hover-ring-2"></div>
+                    
+                    <!-- Orbit ring 2 -->
+                    <div class="orbit-ring orbit-ring-2">
+                        <div class="data-node node-3"><span>DB</span></div>
+                        <div class="data-node node-4"><span>ML</span></div>
+                    </div>
+                    
+                    <!-- Inner orbit ring 1 -->
+                    <div class="orbit-ring orbit-ring-1">
+                        <div class="data-node node-5"></div>
+                        <div class="data-node node-6"></div>
+                    </div>
+                    
+                    <!-- Circuit traces -->
+                    <svg class="circuit-traces" viewBox="0 0 400 400">
+                        <path class="trace trace-1" d="M200,50 L200,120" />
+                        <path class="trace trace-2" d="M350,200 L280,200" />
+                        <path class="trace trace-3" d="M200,350 L200,280" />
+                        <path class="trace trace-4" d="M50,200 L120,200" />
+                        <path class="trace trace-5" d="M80,80 L140,140" />
+                        <path class="trace trace-6" d="M320,80 L260,140" />
+                        <path class="trace trace-7" d="M320,320 L260,260" />
+                        <path class="trace trace-8" d="M80,320 L140,260" />
+                    </svg>
+                    
+                    <!-- Energy pulse rings -->
+                    <div class="energy-pulse pulse-1"></div>
+                    <div class="energy-pulse pulse-2"></div>
+                    <div class="energy-pulse pulse-3"></div>
+                    
+                    <!-- Radar sweep -->
+                    <div class="radar-sweep"></div>
+                    
+                    <!-- Core avatar -->
+                    <div class="avatar-core glass">
+                        <img src="assets/developer_avatar.png" alt="Shahid Khan - AI & Backend Architect" class="avatar-image">
+                        <div class="avatar-glow"></div>
+                    </div>
+                    
+                    <!-- Status indicators -->
+                    <div class="status-indicator status-top">ONLINE</div>
+                    <div class="status-indicator status-bottom">v2.4</div>
                 </div>
             </div>
         </section>
@@ -525,7 +601,27 @@
     <!-- Toast Notifications -->
     <div class="toast-container"></div>
 
+    <!-- AI Command Interface -->
+    <button class="ai-terminal-toggle glass" aria-label="Open AI Terminal">
+        <i data-lucide="terminal"></i>
+    </button>
+
+    <div class="ai-terminal-window glass">
+        <div class="terminal-header">
+            <span class="terminal-title">SHAHID_OS v2.4 // AI_CORE</span>
+            <button class="terminal-close" aria-label="Close Terminal"><i data-lucide="x"></i></button>
+        </div>
+        <div class="terminal-body" id="terminal-output">
+            <div class="terminal-line system-msg">Neural link active. Type 'help' to view available commands.</div>
+        </div>
+        <div class="terminal-input-line">
+            <span class="prompt">guest@shahid-core:~$</span>
+            <input type="text" id="terminal-input" autocomplete="off" spellcheck="false">
+        </div>
+    </div>
+
     <!-- Script Link -->
     <script src="script.js"></script>
+    <script src="animations.js"></script>
 </body>
 </html>

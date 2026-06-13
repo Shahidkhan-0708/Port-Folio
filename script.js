@@ -517,6 +517,14 @@ document.addEventListener('DOMContentLoaded', () => {
             color: Math.random() > 0.5 ? '138,43,226' : '0,245,255'
         });
 
+        let mouse = { x: null, y: null };
+        window.addEventListener('mousemove', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            mouse.x = e.clientX - rect.left;
+            mouse.y = e.clientY - rect.top;
+        });
+        window.addEventListener('mouseout', () => { mouse.x = null; mouse.y = null; });
+
         for (let i = 0; i < NUM; i++) particles.push(spawn());
 
         const draw = () => {
@@ -527,8 +535,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx.fillStyle = `rgba(${p.color},${p.alpha})`;
                 ctx.fill();
 
+                // Mouse interaction (Repel)
+                if (mouse.x != null && mouse.y != null) {
+                    let dx = mouse.x - p.x;
+                    let dy = mouse.y - p.y;
+                    let distance = Math.hypot(dx, dy);
+                    if (distance < 120) {
+                        const force = (120 - distance) / 120;
+                        p.vx -= (dx / distance) * force * 0.5;
+                        p.vy -= (dy / distance) * force * 0.5;
+                    }
+                }
+
+                // Apply velocity and friction
                 p.x += p.vx;
                 p.y += p.vy;
+                p.vx *= 0.98; // Friction
+                p.vy *= 0.98; 
+                
+                // Base upward drift if moving too slow
+                if (p.vy > -0.2) p.vy -= 0.05;
+
                 p.alpha -= 0.0025;
 
                 if (p.alpha <= 0 || p.y < 0) {
@@ -558,6 +585,77 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     initParticles();
 
+    // 14a. Avatar Particle Field (AI Core)
+    const avatarCanvas = document.getElementById('avatar-particles');
+    if (avatarCanvas) {
+        const actx = avatarCanvas.getContext('2d');
+        const container = avatarCanvas.parentElement;
+        
+        const resizeAvatar = () => {
+            avatarCanvas.width = container.offsetWidth;
+            avatarCanvas.height = container.offsetHeight;
+        };
+        resizeAvatar();
+        window.addEventListener('resize', resizeAvatar);
+        
+        const dots = [];
+        const DOT_COUNT = 60;
+        const cx = () => avatarCanvas.width / 2;
+        const cy = () => avatarCanvas.height / 2;
+        
+        for (let i = 0; i < DOT_COUNT; i++) {
+            const angle = Math.random() * Math.PI * 2;
+            const radius = 60 + Math.random() * 140;
+            dots.push({
+                angle,
+                radius,
+                speed: (0.002 + Math.random() * 0.008) * (Math.random() > 0.5 ? 1 : -1),
+                size: 1 + Math.random() * 2,
+                alpha: 0.2 + Math.random() * 0.6,
+                color: Math.random() > 0.5 ? '0,245,255' : '138,43,226'
+            });
+        }
+        
+        const drawAvatar = () => {
+            actx.clearRect(0, 0, avatarCanvas.width, avatarCanvas.height);
+            const centerX = cx();
+            const centerY = cy();
+            
+            dots.forEach(d => {
+                d.angle += d.speed;
+                const x = centerX + Math.cos(d.angle) * d.radius;
+                const y = centerY + Math.sin(d.angle) * d.radius;
+                
+                actx.beginPath();
+                actx.arc(x, y, d.size, 0, Math.PI * 2);
+                actx.fillStyle = `rgba(${d.color}, ${d.alpha})`;
+                actx.fill();
+            });
+            
+            // Draw faint connection lines between close dots
+            for (let i = 0; i < dots.length; i++) {
+                for (let j = i + 1; j < dots.length; j++) {
+                    const x1 = centerX + Math.cos(dots[i].angle) * dots[i].radius;
+                    const y1 = centerY + Math.sin(dots[i].angle) * dots[i].radius;
+                    const x2 = centerX + Math.cos(dots[j].angle) * dots[j].radius;
+                    const y2 = centerY + Math.sin(dots[j].angle) * dots[j].radius;
+                    const dist = Math.hypot(x1 - x2, y1 - y2);
+                    if (dist < 70) {
+                        actx.beginPath();
+                        actx.moveTo(x1, y1);
+                        actx.lineTo(x2, y2);
+                        actx.strokeStyle = `rgba(0,245,255,${0.1 * (1 - dist / 70)})`;
+                        actx.lineWidth = 0.5;
+                        actx.stroke();
+                    }
+                }
+            }
+            
+            requestAnimationFrame(drawAvatar);
+        };
+        drawAvatar();
+    }
+
     // 14. Section Scroll Reveal Animations
     const sectionElements = document.querySelectorAll('.section');
     const sectionObserver = new IntersectionObserver((entries) => {
@@ -586,3 +684,110 @@ document.addEventListener('DOMContentLoaded', () => {
         heroSection2.style.transform = 'none';
     }
 });
+
+// 15. Custom Cursor & Magnetic Elements
+const cursorDot = document.querySelector('.cursor-dot');
+const cursorGlow = document.querySelector('.cursor-glow');
+
+if (cursorDot && cursorGlow) {
+    window.addEventListener('mousemove', (e) => {
+        cursorDot.style.left = e.clientX + 'px';
+        cursorDot.style.top = e.clientY + 'px';
+        
+        // Slight delay for glow
+        setTimeout(() => {
+            cursorGlow.style.left = e.clientX + 'px';
+            cursorGlow.style.top = e.clientY + 'px';
+        }, 50);
+    });
+
+    const interactables = document.querySelectorAll('a, button, .project-card, .skill-card, input, textarea');
+    interactables.forEach(el => {
+        el.addEventListener('mouseenter', () => cursorGlow.classList.add('active'));
+        el.addEventListener('mouseleave', () => cursorGlow.classList.remove('active'));
+    });
+}
+
+// 16. Scroll Progress Tracker
+const scrollBar = document.getElementById('scroll-bar');
+if (scrollBar) {
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.body.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        scrollBar.style.width = scrollPercent + '%';
+    });
+}
+
+// 17. AI Command Terminal Interface
+const terminalToggle = document.querySelector('.ai-terminal-toggle');
+const terminalWindow = document.querySelector('.ai-terminal-window');
+const terminalClose = document.querySelector('.terminal-close');
+const terminalInput = document.getElementById('terminal-input');
+const terminalOutput = document.getElementById('terminal-output');
+
+if (terminalToggle && terminalWindow) {
+    terminalToggle.addEventListener('click', () => {
+        terminalWindow.classList.toggle('active');
+        if (terminalWindow.classList.contains('active')) {
+            setTimeout(() => terminalInput.focus(), 300);
+        }
+    });
+
+    terminalClose.addEventListener('click', () => {
+        terminalWindow.classList.remove('active');
+    });
+
+    const commands = {
+        'help': "Available commands: \n- about: Learn about Shahid\n- skills: View core stack\n- projects: List active prototypes\n- hire: Initiate contact protocol\n- explain growcus architecture: Deep dive into project\n- clear: Purge terminal history",
+        'about': "I am Shahid Khan, an AI & Backend Systems Architect. I specialize in building highly scalable, production-grade systems and integrating LLMs into real-world applications.",
+        'skills': "CORE STACK:\n> Backend: Node.js, Express, FastAPI\n> Databases: MongoDB, PostgreSQL, Redis\n> AI: Gemini, Llama, Prompt Engineering\n> DevOps: Docker, Coolify, GitHub Actions",
+        'projects': "ACTIVE PROTOTYPES:\n1. GROWCUS: AI Dropout Prediction\n2. TRUSTLENS: AI Document Verification\n3. CLIENTFINDER: AI Market Analysis\n4. SOCIETY SYSTEM: Multi-role DB Mgmt",
+        'hire': "SIGNAL INITIATION...\nContact protocol unlocked. Please scroll to the transmission terminal at the bottom of the system to establish a direct link, or click the WhatsApp gateway.",
+        'explain growcus architecture': "GROWCUS ARCHITECTURE:\nFrontend: Next.js (React)\nBackend: Express + Node.js\nDatabase: MongoDB (Sharded)\nAI Layer: Integrated Llama models for predictive analytics and chatbot assistance.\nAuth: Multi-role RBAC with secure httpOnly cookies.",
+        'why hire shahid': "I don't just write code; I architect systems. I understand how to bridge the gap between AI research and production-ready applications. I prioritize scalability, security, and exceptional UI/UX."
+    };
+
+    terminalInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            const val = terminalInput.value.trim().toLowerCase();
+            if (!val) return;
+            
+            // Print user command
+            const userLine = document.createElement('div');
+            userLine.className = 'terminal-line user-msg';
+            userLine.textContent = `> ${val}`;
+            terminalOutput.appendChild(userLine);
+            
+            terminalInput.value = '';
+            
+            if (val === 'clear') {
+                terminalOutput.innerHTML = '';
+                return;
+            }
+
+            // Simulate processing delay
+            setTimeout(() => {
+                const responseLine = document.createElement('div');
+                responseLine.className = 'terminal-line';
+                
+                let responseText = commands[val] || `Command not recognized: '${val}'. Type 'help' for valid inputs.`;
+                
+                if (!commands[val]) responseLine.classList.add('error-msg');
+                
+                terminalOutput.appendChild(responseLine);
+                
+                // Typewriter effect for response
+                let i = 0;
+                responseLine.textContent = '';
+                const typeInterval = setInterval(() => {
+                    responseLine.textContent += responseText.charAt(i);
+                    i++;
+                    terminalOutput.scrollTop = terminalOutput.scrollHeight;
+                    if (i >= responseText.length) clearInterval(typeInterval);
+                }, 15);
+                
+            }, 400);
+        }
+    });
+}
